@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (3.2.1)
+  - SwiftyJSON (2.3.2)
+  - SWRevealViewController (2.3.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - SwiftyJSON
+  - SWRevealViewController
+
+SPEC CHECKSUMS:
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
+
+COCOAPODS: 0.39.0
