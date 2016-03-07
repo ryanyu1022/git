@@ -10,9 +10,15 @@ import UIKit
 
 class RearTableViewController: UITableViewController {
     var TableArray = [String]()
+    @IBOutlet var tab: UITableView!
     
     override func viewDidLoad() {
-        TableArray = ["main","save"]
+        
+        //移除空的cell分隔線
+        tab.tableFooterView = UIView(frame:CGRectZero)
+        tab.separatorColor = UIColor.grayColor()
+        
+        TableArray = ["title","info","all","dog","cat","rabbit","save","temp"]
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -20,20 +26,16 @@ class RearTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //        var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+//        var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         var cell = tableView.dequeueReusableCellWithIdentifier(TableArray[indexPath.row], forIndexPath: indexPath) as UITableViewCell
-        
-        cell.textLabel?.text = TableArray[indexPath.row]
+
         
         return cell
     }
     
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        var vc =  segue.destinationViewController as! ViewController
-    ////        var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
-    //        if let indexPath  = self.tableView.indexPathForSelectedRow {
-    //            vc.varView = indexPath.row
-    //        }
-    //    }
+//    func setFont(label:UILabel){
+//        label.font =  UIFont(name: "Avenir-Light", size: 25.0)
+//    }
+
 }
 

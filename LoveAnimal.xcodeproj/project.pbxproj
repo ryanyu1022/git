@@ -19,6 +19,8 @@
 		94A1B65B1C8752E9002919E8 /* SaveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B65A1C8752E9002919E8 /* SaveListViewController.swift */; };
 		94A1B65D1C8754E9002919E8 /* RearTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B65C1C8754E9002919E8 /* RearTableViewController.swift */; };
 		94A1B65F1C877524002919E8 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B65E1C877524002919E8 /* ListViewCell.swift */; };
+		94A1B69D1C8C7F26002919E8 /* DogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B69C1C8C7F26002919E8 /* DogViewController.swift */; };
+		94A1B6A11C8C8DC0002919E8 /* DogViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B6A01C8C8DC0002919E8 /* DogViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		94A1B65A1C8752E9002919E8 /* SaveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveListViewController.swift; sourceTree = "<group>"; };
 		94A1B65C1C8754E9002919E8 /* RearTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RearTableViewController.swift; sourceTree = "<group>"; };
 		94A1B65E1C877524002919E8 /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
+		94A1B69C1C8C7F26002919E8 /* DogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogViewController.swift; sourceTree = "<group>"; };
+		94A1B6A01C8C8DC0002919E8 /* DogViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogViewCell.swift; sourceTree = "<group>"; };
 		C8CDCEA98074AFCD1CE5A703 /* Pods_LoveAnimal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveAnimal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D0502E564C7E5F57901288 /* Pods-LoveAnimal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveAnimal.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveAnimal/Pods-LoveAnimal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,8 +127,10 @@
 			children = (
 				94A1B6271C873DE7002919E8 /* AppDelegate.swift */,
 				94A1B6581C875263002919E8 /* ListViewController.swift */,
+				94A1B69C1C8C7F26002919E8 /* DogViewController.swift */,
 				94A1B62B1C873DE7002919E8 /* Main.storyboard */,
 				94A1B65E1C877524002919E8 /* ListViewCell.swift */,
+				94A1B6A01C8C8DC0002919E8 /* DogViewCell.swift */,
 				94A1B65C1C8754E9002919E8 /* RearTableViewController.swift */,
 				94A1B65A1C8752E9002919E8 /* SaveListViewController.swift */,
 				94A1B6311C873DE7002919E8 /* Assets.xcassets */,
@@ -344,11 +350,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				94A1B65D1C8754E9002919E8 /* RearTableViewController.swift in Sources */,
+				94A1B6A11C8C8DC0002919E8 /* DogViewCell.swift in Sources */,
 				94A1B6301C873DE7002919E8 /* LoveAnimal.xcdatamodeld in Sources */,
 				94A1B65B1C8752E9002919E8 /* SaveListViewController.swift in Sources */,
 				94A1B6591C875263002919E8 /* ListViewController.swift in Sources */,
 				94A1B65F1C877524002919E8 /* ListViewCell.swift in Sources */,
 				94A1B6281C873DE7002919E8 /* AppDelegate.swift in Sources */,
+				94A1B69D1C8C7F26002919E8 /* DogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
