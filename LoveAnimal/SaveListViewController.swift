@@ -10,11 +10,13 @@ import UIKit
 
 class SaveListViewController: UIViewController {
     
+    @IBOutlet weak var menuItem: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        Open.target = self.revealViewController()
-        //        Open.action = Selector("revealToggle:")
+        //menu滑動
+        menuItem.target = self.revealViewController()
+        menuItem.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
     }
