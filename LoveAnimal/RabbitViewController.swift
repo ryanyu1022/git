@@ -1,8 +1,8 @@
 //
-//  DogViewController.swift
+//  RabbitViewController.swift
 //  LoveAnimal
 //
-//  Created by ryan on 2016/3/6.
+//  Created by ryan on 2016/3/8.
 //  Copyright © 2016年 ryan. All rights reserved.
 //
 
@@ -12,8 +12,8 @@ import Alamofire
 import SwiftyJSON
 import SWRevealViewController
 
-class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDownloadDelegate {
-    
+class RabbitViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDownloadDelegate {
+
     var objects = [AnyObject]()
     var arrRes = [[String:AnyObject]]()
     var refreshControl:UIRefreshControl!
@@ -21,8 +21,6 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
     @IBOutlet weak var tab: UITableView!
     @IBOutlet weak var menuItem: UIBarButtonItem!
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +54,7 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
     // 表格的儲存格設定
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         
-        let cell:DogViewCell = tableView.dequeueReusableCellWithIdentifier("dog", forIndexPath: indexPath) as! DogViewCell
+        let cell:RabbitViewCell = tableView.dequeueReusableCellWithIdentifier("rabbit", forIndexPath: indexPath) as! RabbitViewCell
         
         let dict = arrRes[indexPath.row]
         
@@ -86,10 +84,10 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
     
     
     func connect(){
-        let param = "犬".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        let url = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917cq=\(param)"
+        let param = "其他".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let url = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)"
         print(url)
-             
+        
         Alamofire.request(.GET, url).responseJSON { (responseData) -> Void in
             let swiftyJsonVar = JSON(responseData.result.value!)
             
@@ -104,8 +102,8 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
     }
     
     func connect2(){
-
-        var param = "犬".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        
+        var param = "其他".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         let url = NSURL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)")
         
         //建立一般的session設定
@@ -144,7 +142,7 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
         }
         
     }
-
+    
     
     
     // 刷新數據
@@ -152,5 +150,6 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
         self.tab.reloadData()
         self.refreshControl!.endRefreshing()
     }
-
+    
 }
+

@@ -1,8 +1,8 @@
 //
-//  DogViewController.swift
+//  CatViewController.swift
 //  LoveAnimal
 //
-//  Created by ryan on 2016/3/6.
+//  Created by ryan on 2016/3/8.
 //  Copyright © 2016年 ryan. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 import SWRevealViewController
 
-class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDownloadDelegate {
+class CatViewController: UIViewController { // , NSURLSessionDelegate, NSURLSessionDownloadDelegate {
     
     var objects = [AnyObject]()
     var arrRes = [[String:AnyObject]]()
@@ -21,12 +21,10 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
     @IBOutlet weak var tab: UITableView!
     @IBOutlet weak var menuItem: UIBarButtonItem!
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        connect2()
+        connect()
         
         //menu滑動
         revealViewController().rearViewRevealWidth = 80
@@ -56,7 +54,7 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
     // 表格的儲存格設定
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         
-        let cell:DogViewCell = tableView.dequeueReusableCellWithIdentifier("dog", forIndexPath: indexPath) as! DogViewCell
+        let cell:CatViewCell = tableView.dequeueReusableCellWithIdentifier("cat", forIndexPath: indexPath) as! CatViewCell
         
         let dict = arrRes[indexPath.row]
         
@@ -86,10 +84,10 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
     
     
     func connect(){
-        let param = "犬".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        let url = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917cq=\(param)"
+        let param = "貓".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let url = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)"
         print(url)
-             
+        
         Alamofire.request(.GET, url).responseJSON { (responseData) -> Void in
             let swiftyJsonVar = JSON(responseData.result.value!)
             
@@ -103,48 +101,48 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
         }
     }
     
-    func connect2(){
-
-        var param = "犬".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        let url = NSURL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)")
-        
-        //建立一般的session設定
-        let sessionWithConfigure = NSURLSessionConfiguration.defaultSessionConfiguration()
-        
-        //設定委任對象為自己
-        let session = NSURLSession(configuration: sessionWithConfigure, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        
-        //設定下載網址
-        if let tempUrl = url {
-            if let check:NSURLSessionDownloadTask = session.downloadTaskWithURL(tempUrl){
-                let dataTask = check
-                //啟動或重新啟動下載動作
-                dataTask.resume()
-            }
-        }
-    }
+//    func connect2(){
+//        
+//        var param = "貓".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+//        let url = NSURL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)")
+//        
+//        //建立一般的session設定
+//        let sessionWithConfigure = NSURLSessionConfiguration.defaultSessionConfiguration()
+//        
+//        //設定委任對象為自己
+//        let session = NSURLSession(configuration: sessionWithConfigure, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+//        
+//        //設定下載網址
+//        if let tempUrl = url {
+//            if let check:NSURLSessionDownloadTask = session.downloadTaskWithURL(tempUrl){
+//                let dataTask = check
+//                //啟動或重新啟動下載動作
+//                dataTask.resume()
+//            }
+//        }
+//    }
     
     
     
-    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
-        
-        do {
-            
-            //JSON資料處理
-            let dataDic = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: location)!, options: NSJSONReadingOptions.MutableContainers) as! [String:[String:AnyObject]]
-            
-            //取得result對應中的results所對應的陣列
-            self.arrRes = dataDic["result"]!["results"] as! [[String:AnyObject]]
-            
-            //重新整理Table View
-            self.tab.reloadData()
-            
-        } catch {
-            print("Error!")
-        }
-        
-    }
-
+//    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+//        
+//        do {
+//            
+//            //JSON資料處理
+//            let dataDic = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: location)!, options: NSJSONReadingOptions.MutableContainers) as! [String:[String:AnyObject]]
+//            
+//            //取得result對應中的results所對應的陣列
+//            self.arrRes = dataDic["result"]!["results"] as! [[String:AnyObject]]
+//            
+//            //重新整理Table View
+//            self.tab.reloadData()
+//            
+//        } catch {
+//            print("Error!")
+//        }
+//        
+//    }
+    
     
     
     // 刷新數據
@@ -152,5 +150,6 @@ class DogViewController: UIViewController , NSURLSessionDelegate, NSURLSessionDo
         self.tab.reloadData()
         self.refreshControl!.endRefreshing()
     }
-
+    
 }
+

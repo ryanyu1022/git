@@ -1,15 +1,15 @@
 //
-//  ListViewCell.swift
+//  RabbitViewCell.swift
 //  LoveAnimal
 //
-//  Created by ryan on 2016/3/3.
+//  Created by ryan on 2016/3/8.
 //  Copyright © 2016年 ryan. All rights reserved.
 //
 
 import UIKit
 
-class ListViewCell: UITableViewCell {
-    
+class RabbitViewCell: UITableViewCell {
+
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var type: UILabel!
@@ -21,15 +21,15 @@ class ListViewCell: UITableViewCell {
         if let image = NSData(contentsOfURL: url!){
             self.img.image = UIImage(data: image)
         }
-//        let image = NSData(contentsOfURL: url!)
-//        self.img.image = UIImage(data: image!)
+        //        let image = NSData(contentsOfURL: url!)
+        //        self.img.image = UIImage(data: image!)
         
         self.name.text = name
         self.type.text = type
         self.variety.text = variety
     }
-
-
+    
+    
 //    override func awakeFromNib() {
 //        super.awakeFromNib()
 //        // Initialization code
