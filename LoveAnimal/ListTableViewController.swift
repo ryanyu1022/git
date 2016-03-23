@@ -50,7 +50,6 @@ class ListTableViewController: UITableViewController ,NSURLSessionDelegate,NSURL
     
     // 設定表格的列數
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                print(dataArray.count)
         return dataArray.count
     }
     
@@ -81,6 +80,8 @@ class ListTableViewController: UITableViewController ,NSURLSessionDelegate,NSURL
         cell.img.layer.borderWidth = 4
         cell.img.layer.borderColor = UIColor.grayColor().CGColor
         
+
+        self.title = "所有動物列表: 共有 \(dataArray.count) 隻動物"
         return cell
     }
     

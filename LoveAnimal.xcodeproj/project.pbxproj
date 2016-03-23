@@ -30,6 +30,8 @@
 		94A1B6F11C903CDF002919E8 /* DogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B6F01C903CDF002919E8 /* DogTableViewController.swift */; };
 		94A1B6F31C90460D002919E8 /* RabbitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B6F21C90460D002919E8 /* RabbitTableViewController.swift */; };
 		94A1B6F51C904D6F002919E8 /* CatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B6F41C904D6F002919E8 /* CatTableViewController.swift */; };
+		94A1B6FB1C918908002919E8 /* CatDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B6FA1C918908002919E8 /* CatDetailViewCell.swift */; };
+		94A1B7071C92D369002919E8 /* CatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B7061C92D369002919E8 /* CatDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		94A1B6F01C903CDF002919E8 /* DogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogTableViewController.swift; sourceTree = "<group>"; };
 		94A1B6F21C90460D002919E8 /* RabbitTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RabbitTableViewController.swift; sourceTree = "<group>"; };
 		94A1B6F41C904D6F002919E8 /* CatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatTableViewController.swift; sourceTree = "<group>"; };
+		94A1B6FA1C918908002919E8 /* CatDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatDetailViewCell.swift; sourceTree = "<group>"; };
+		94A1B7061C92D369002919E8 /* CatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatDetailViewController.swift; sourceTree = "<group>"; };
 		C8CDCEA98074AFCD1CE5A703 /* Pods_LoveAnimal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveAnimal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D0502E564C7E5F57901288 /* Pods-LoveAnimal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveAnimal.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveAnimal/Pods-LoveAnimal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +154,7 @@
 				94A1B6E61C8ED180002919E8 /* ListTableViewController.swift */,
 				94A1B6F01C903CDF002919E8 /* DogTableViewController.swift */,
 				94A1B6F41C904D6F002919E8 /* CatTableViewController.swift */,
+				94A1B7061C92D369002919E8 /* CatDetailViewController.swift */,
 				94A1B6F21C90460D002919E8 /* RabbitTableViewController.swift */,
 				94A1B6EA1C8EF6A4002919E8 /* HttpController.swift */,
 				94A1B65C1C8754E9002919E8 /* RearTableViewController.swift */,
@@ -198,6 +203,7 @@
 				94A1B6A01C8C8DC0002919E8 /* DogViewCell.swift */,
 				94A1B6E21C8DF805002919E8 /* RabbitViewCell.swift */,
 				94A1B6DE1C8DE374002919E8 /* CatViewCell.swift */,
+				94A1B6FA1C918908002919E8 /* CatDetailViewCell.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -401,9 +407,11 @@
 				94A1B6E71C8ED180002919E8 /* ListTableViewController.swift in Sources */,
 				94A1B6E11C8DF683002919E8 /* RabbitViewController.swift in Sources */,
 				94A1B6301C873DE7002919E8 /* LoveAnimal.xcdatamodeld in Sources */,
+				94A1B6FB1C918908002919E8 /* CatDetailViewCell.swift in Sources */,
 				94A1B65B1C8752E9002919E8 /* SaveListViewController.swift in Sources */,
 				94A1B6591C875263002919E8 /* ListViewController.swift in Sources */,
 				94A1B6EB1C8EF6A4002919E8 /* HttpController.swift in Sources */,
+				94A1B7071C92D369002919E8 /* CatDetailViewController.swift in Sources */,
 				94A1B65F1C877524002919E8 /* ListViewCell.swift in Sources */,
 				94A1B6F11C903CDF002919E8 /* DogTableViewController.swift in Sources */,
 				94A1B6F51C904D6F002919E8 /* CatTableViewController.swift in Sources */,

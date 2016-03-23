@@ -33,7 +33,6 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
         
         //網址
         let url = NSURL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)")
-        print(url)
         
         //建立一般的session設定
         let sessionWithConfigure = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -53,7 +52,6 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
     
     // 設定表格的列數
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(dataArray.count)
         return dataArray.count
     }
     
@@ -84,6 +82,7 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
         cell.img.layer.borderWidth = 4
         cell.img.layer.borderColor = UIColor.grayColor().CGColor
         
+        self.title = "所有動物列表: 共有 \(dataArray.count) 隻動物"
         return cell
     }
     
@@ -104,6 +103,19 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
             print("Error!")
         }
         
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let destinationController = segue.destinationViewController as! CatDetailViewController
+                //                let data = dataArray[indexPath.row]
+                destinationController.receive = dataArray[indexPath.row] as! [String : AnyObject]
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

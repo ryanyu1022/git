@@ -18,7 +18,7 @@ class RearTableViewController: UITableViewController {
         tab.tableFooterView = UIView(frame:CGRectZero)
         tab.separatorColor = UIColor.grayColor()
         
-        TableArray = ["title","info","all","dog","cat","rabbit","save","temp"]
+        TableArray = ["title","info","dog","cat","rabbit","save","temp"]
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

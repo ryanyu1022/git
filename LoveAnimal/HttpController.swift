@@ -20,22 +20,25 @@ class HttpController:NSObject {
     var arrRes = [[String:AnyObject]]()
     
 
-    func connect(urla:String){
-        
-        Alamofire.request(.GET, urla).responseJSON { (responseData) -> Void in
-            let swiftyJsonVar = JSON(responseData.result.value!)
-            
-            if let resData = swiftyJsonVar["result"]["results"].arrayObject {
-                self.arrRes = resData as! [[String:AnyObject]]
-                print(self.arrRes)
-                self.delegate?.didReceiveResults(self.arrRes)
-            }
-        }
-        
-        
-    }
-    
-    
+//    func connect(urla:String){
+//        
+//        Alamofire.request(.GET, urla).responseJSON { (responseData) -> Void in
+//            let swiftyJsonVar = JSON(responseData.result.value!)
+//            
+//            if let resData = swiftyJsonVar["result"]["results"].arrayObject {
+//                self.arrRes = resData as! [[String:AnyObject]]
+//                print(self.arrRes)
+//                self.delegate?.didReceiveResults(self.arrRes)
+//            }
+//        }
+//        
+//        let url:NSURL = NSURL(string: "http://data.taipei.gov.tw/opendata/apply/json/QTdBNEQ5NkQtQkM3MS00QUI2LUJENTctODI0QTM5MkIwMUZE")!
+//        let request: NSURLRequest = NSURLRequest(URL: url)
+//        
+//        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: <#T##(NSURLResponse?, NSData?, NSError?) -> Void#>)
+//
+//    }
+
     //AJAX讀取網頁資料類別
 //    func onSearch(urla:String) {
 //        let url:NSURL = NSURL(string: "http://data.taipei.gov.tw/opendata/apply/json/QTdBNEQ5NkQtQkM3MS00QUI2LUJENTctODI0QTM5MkIwMUZE")!
