@@ -32,6 +32,7 @@
 		94A1B6F51C904D6F002919E8 /* CatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B6F41C904D6F002919E8 /* CatTableViewController.swift */; };
 		94A1B6FB1C918908002919E8 /* CatDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B6FA1C918908002919E8 /* CatDetailViewCell.swift */; };
 		94A1B7071C92D369002919E8 /* CatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1B7061C92D369002919E8 /* CatDetailViewController.swift */; };
+		94AACCEF1CA4435800C22565 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AACCEE1CA4435800C22565 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		94A1B6F41C904D6F002919E8 /* CatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatTableViewController.swift; sourceTree = "<group>"; };
 		94A1B6FA1C918908002919E8 /* CatDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatDetailViewCell.swift; sourceTree = "<group>"; };
 		94A1B7061C92D369002919E8 /* CatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatDetailViewController.swift; sourceTree = "<group>"; };
+		94AACCEE1CA4435800C22565 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		C8CDCEA98074AFCD1CE5A703 /* Pods_LoveAnimal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveAnimal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D0502E564C7E5F57901288 /* Pods-LoveAnimal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveAnimal.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveAnimal/Pods-LoveAnimal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 				94A1B6F41C904D6F002919E8 /* CatTableViewController.swift */,
 				94A1B7061C92D369002919E8 /* CatDetailViewController.swift */,
 				94A1B6F21C90460D002919E8 /* RabbitTableViewController.swift */,
+				94AACCEE1CA4435800C22565 /* InfoViewController.swift */,
 				94A1B6EA1C8EF6A4002919E8 /* HttpController.swift */,
 				94A1B65C1C8754E9002919E8 /* RearTableViewController.swift */,
 				94A1B65A1C8752E9002919E8 /* SaveListViewController.swift */,
@@ -412,6 +415,7 @@
 				94A1B6591C875263002919E8 /* ListViewController.swift in Sources */,
 				94A1B6EB1C8EF6A4002919E8 /* HttpController.swift in Sources */,
 				94A1B7071C92D369002919E8 /* CatDetailViewController.swift in Sources */,
+				94AACCEF1CA4435800C22565 /* InfoViewController.swift in Sources */,
 				94A1B65F1C877524002919E8 /* ListViewCell.swift in Sources */,
 				94A1B6F11C903CDF002919E8 /* DogTableViewController.swift in Sources */,
 				94A1B6F51C904D6F002919E8 /* CatTableViewController.swift in Sources */,
