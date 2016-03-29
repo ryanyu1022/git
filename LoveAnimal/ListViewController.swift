@@ -53,7 +53,7 @@ class ListViewController: UIViewController {
     // 表格的儲存格設定
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
 
-        let cell:ListViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListViewCell
+        let cell:SaveViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SaveViewCell
 
         let dict = arrRes[indexPath.row]
         

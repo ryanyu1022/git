@@ -114,6 +114,11 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
                 let destinationController = segue.destinationViewController as! CatDetailViewController
                 //                let data = dataArray[indexPath.row]
                 destinationController.receive = dataArray[indexPath.row] as! [String : AnyObject]
+                
+                //回前頁按鈕
+                let backItem = UIBarButtonItem()
+                backItem.title = "回前頁"
+                navigationItem.backBarButtonItem = backItem
             }
         }
     }

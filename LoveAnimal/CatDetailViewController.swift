@@ -12,6 +12,7 @@ import MessageUI
 class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDelegate {
 
     var receive = [String:AnyObject]() //儲存動物資料
+    var receiveObj:Animal?     //儲存動物資料
     var buttonTitle:String = ""
     //動物資料
     var name = "", sex = "", build = "", variety = "", isSterilization = "", hairType = ""
@@ -19,6 +20,7 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
     
     @IBOutlet weak var tab: UITableView!
     @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var saveItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -219,6 +221,12 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         }
     }
     
+    @IBAction func saveAction(sender: AnyObject) {
+        
+         let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext     //宣告代理物件操作core data
+        Animal.add(moc, receive: receive)
+    }
+    
     func setView(){
         // Set table view background color
         self.tab.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
@@ -245,17 +253,35 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
     }
     
     func setData(){
-        name = receive["Name"] as! String
-        sex = receive["Sex"] as! String
-        build = receive["Build"] as! String
-        variety = receive["Variety"] as! String
-        isSterilization = receive["IsSterilization"] as! String
-        hairType = receive["HairType"] as! String
-        acceptNum = receive["AcceptNum"] as! String
-        note = receive["Note"] as! String
-        phone = receive["Phone"] as! String
-        email = receive["Email"] as! String
-        resettlement = receive["Resettlement"] as! String
-        imageName = receive["ImageName"] as! String
+
+        // 收藏頁面
+        if let re = receiveObj {
+            saveItem.enabled = false  //
+            name = re.name!
+            sex = re.sex!
+            build = re.build!
+            variety = re.variety!
+            isSterilization = re.isSterilization!
+            hairType = re.hairType!
+            acceptNum = re.acceptNum!
+            note = re.note!
+            phone = re.phone!
+            email = re.email!
+            resettlement = re.resettlement!
+            imageName = re.imageName!
+        }else{  // 一般頁面
+            name = receive["Name"] as! String
+            sex = receive["Sex"] as! String
+            build = receive["Build"] as! String
+            variety = receive["Variety"] as! String
+            isSterilization = receive["IsSterilization"] as! String
+            hairType = receive["HairType"] as! String
+            acceptNum = receive["AcceptNum"] as! String
+            note = receive["Note"] as! String
+            phone = receive["Phone"] as! String
+            email = receive["Email"] as! String
+            resettlement = receive["Resettlement"] as! String
+            imageName = receive["ImageName"] as! String
+        }
     }
 }

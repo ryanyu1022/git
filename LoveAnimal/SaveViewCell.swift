@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewCell: UITableViewCell {
+class SaveViewCell: UITableViewCell {
     
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var name: UILabel!
