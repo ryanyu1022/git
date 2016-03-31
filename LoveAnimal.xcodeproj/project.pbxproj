@@ -34,6 +34,7 @@
 		94AACCEF1CA4435800C22565 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AACCEE1CA4435800C22565 /* InfoViewController.swift */; };
 		94AACD381CA9A28500C22565 /* Animal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AACD361CA9A28500C22565 /* Animal+CoreDataProperties.swift */; };
 		94AACD391CA9A28500C22565 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AACD371CA9A28500C22565 /* Animal.swift */; };
+		94AACD771CAD21C100C22565 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AACD761CAD21C100C22565 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		94AACCEE1CA4435800C22565 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		94AACD361CA9A28500C22565 /* Animal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		94AACD371CA9A28500C22565 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		94AACD761CAD21C100C22565 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C8CDCEA98074AFCD1CE5A703 /* Pods_LoveAnimal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveAnimal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D0502E564C7E5F57901288 /* Pods-LoveAnimal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveAnimal.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveAnimal/Pods-LoveAnimal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94AACD771CAD21C100C22565 /* Social.framework in Frameworks */,
 				32107966FCE74E71B072E5DD /* Pods_LoveAnimal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +220,7 @@
 		F2787F0E5F909598D5ED27EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94AACD761CAD21C100C22565 /* Social.framework */,
 				C8CDCEA98074AFCD1CE5A703 /* Pods_LoveAnimal.framework */,
 			);
 			name = Frameworks;

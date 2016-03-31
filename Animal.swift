@@ -67,5 +67,22 @@ class Animal: NSManagedObject {
         }
     }
     
+    //查詢
+    class func query(moc:NSManagedObjectContext, acceptNum:String)->[Animal]{
+        let request = NSFetchRequest(entityName: entityName)
+        
+        var returnData = [Animal]()
+//        var check:Bool = false
+        request.predicate = NSPredicate(format: "acceptNum == %@", acceptNum)
+        do {
+            
+            returnData = try moc.executeFetchRequest(request) as! [Animal]
+            
+        }catch{
+            fatalError("Failed to fetch data: \(error)")
+        }
+        
+        return returnData
+    }
 
 }
