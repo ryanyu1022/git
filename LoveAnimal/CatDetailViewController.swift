@@ -8,10 +8,12 @@
 
 import UIKit
 import MessageUI
+import Social
 
 class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDelegate {
 
     var receive = [String:AnyObject]() //儲存動物資料
+    var receiveObj:Animal?     //儲存動物資料
     var buttonTitle:String = ""
     //動物資料
     var name = "", sex = "", build = "", variety = "", isSterilization = "", hairType = ""
@@ -19,6 +21,7 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
     
     @IBOutlet weak var tab: UITableView!
     @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var saveItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +93,7 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         
         let alertView:UIAlertView = UIAlertView()
         alertView.title = "是否要撥打電話?"
-        alertView.message = receive["Phone"] as! String
+        alertView.message = phone
         alertView.delegate = self
         alertView.addButtonWithTitle("取消")
         alertView.addButtonWithTitle("通話")
@@ -133,7 +136,7 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         let place:String = receive["Resettlement"] as! String   //收容位置
         var name:String = receive["Name"] as! String   //名字
         let number:String = receive["AcceptNum"] as! String   //編號
-        let imgUrl = receive["ImageName"] as! String   //圖片
+//        let imgUrl = receive["ImageName"] as! String   //圖片
         if name.containsString("無資料") {
             name = ""
         }
@@ -170,7 +173,7 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
 
     @IBAction func mapAction(sender: AnyObject) {
         
-        let place:String = receive["Resettlement"] as! String   //收容位置
+        let place:String = resettlement   //收容位置
         var param = ""
         
         if place.containsString("愛免協會") {
@@ -195,28 +198,129 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
     }
     
     @IBAction func shareAction(sender: AnyObject) {
-        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"line://")!)) {
-            
-            var place = ""
-            if self.resettlement.containsString("愛免協會") {
-                place = "愛免協會"
-            }else if self.resettlement.containsString("動物之家"){
-                place = "動物之家"
-            }else if self.resettlement.containsString("臺北市流浪貓保護協會"){
-                place = "臺北市流浪貓保護協會"
-            }else{
-                place = self.resettlement
+        
+        //建立UIAlertController
+        let ac: UIAlertController = UIAlertController(title: "", message: "分享至", preferredStyle: .ActionSheet)
+        //取消
+        let cancel: UIAlertAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        //LINE
+        let line: UIAlertAction = UIAlertAction(title: "LINE", style: .Default) { action -> Void in
+            if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"line://")!)) {
+                
+                var place = ""
+                if self.resettlement.containsString("愛免協會") {
+                    place = "愛免協會"
+                }else if self.resettlement.containsString("動物之家"){
+                    place = "臺北市動物之家"
+                }else if self.resettlement.containsString("臺北市流浪貓保護協會"){
+                    place = "臺北市流浪貓保護協會"
+                }else{
+                    place = self.resettlement
+                }
+                
+                let tempContent = "我來自\(place),我的編號是\(self.acceptNum),快來看我吧...\(self.imageName)"
+                
+                let content = tempContent.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                
+                UIApplication.sharedApplication().openURL(NSURL(string:"line://msg/text/\(content)")!)
+            } else {
+                //itms-apps://itunes.apple.com/app/
+                UIApplication.sharedApplication().openURL(NSURL(string:"itms-apps://itunes.apple.com/app/")!)
             }
-
-            let tempContent = "我來自\(place),我的編號是\(self.acceptNum),快來看我吧...\(self.imageName)"
-            
-            let content = tempContent.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-
-            UIApplication.sharedApplication().openURL(NSURL(string:"line://msg/text/\(content)")!)
-        } else {
-            //itms-apps://itunes.apple.com/app/
-            UIApplication.sharedApplication().openURL(NSURL(string:"itms-apps://itunes.apple.com/app/")!)
         }
+        //FB
+        let fb: UIAlertAction = UIAlertAction(title: "Facebook", style: .Default) { action -> Void in
+            
+            // 檢查能否分享至 Facebook
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+                
+                // 初始化預設的視圖控制器分享貼文
+                let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                
+                //動物圖片網址
+                let url = NSURL(string: self.imageName)
+                facebookComposeVC.addURL(url)
+                
+                self.presentViewController(facebookComposeVC, animated: true, completion: nil)
+            }
+            else {
+
+                //建立UIAlertController
+                let quetion = UIAlertController(title: nil, message: "您尚未安裝Facebook", preferredStyle: .Alert)
+                let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+                quetion.addAction(callaction)
+                
+                //Show
+                self.presentViewController(quetion, animated: true, completion: nil)
+            }
+           
+        }
+        
+        //Twitter
+        let twitter: UIAlertAction = UIAlertAction(title: "Twitter", style: .Default) { action -> Void in
+            
+            // 檢查能否分享至 Twitter
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+                // 初始化預設的視圖控制器分享貼文
+                let twitterComposeVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                
+                //動物圖片網址
+                let url = NSURL(string: self.imageName)
+                twitterComposeVC.addURL(url)
+
+                self.presentViewController(twitterComposeVC, animated: true, completion: nil)
+
+            }
+            else {
+                //建立UIAlertController
+                let quetion = UIAlertController(title: nil, message: "您尚未安裝Twitter", preferredStyle: .Alert)
+                let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+                quetion.addAction(callaction)
+                
+                //Show
+                self.presentViewController(quetion, animated: true, completion: nil)
+            }
+        }
+        
+        ac.addAction(cancel)
+        ac.addAction(line)
+        ac.addAction(fb)
+        ac.addAction(twitter)
+        
+        //provide a popover sourceView when using it on iPad
+//        actionSheetController.popoverPresentationController?.sourceView = sender as! UIView;
+        
+        //Present the AlertController
+        self.presentViewController(ac, animated: true, completion: nil)
+
+    }
+    
+    @IBAction func saveAction(sender: AnyObject) {
+        
+        let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext     //宣告代理物件操作core data
+        let check = Animal.query(moc, acceptNum: acceptNum)
+        
+        if check.isEmpty {
+            Animal.add(moc, receive: receive)
+            
+            //建立UIAlertController
+            let ac = UIAlertController(title: nil, message: "收藏成功", preferredStyle: .Alert)
+            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+            ac.addAction(callaction)
+            
+            //Show
+            self.presentViewController(ac, animated: true, completion: nil)
+            
+        }else{
+            //建立UIAlertController
+            let quetion = UIAlertController(title: nil, message: "已收藏", preferredStyle: .Alert)
+            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+            quetion.addAction(callaction)
+            
+            //Show
+            self.presentViewController(quetion, animated: true, completion: nil)
+        }
+
     }
     
     func setView(){
@@ -245,17 +349,39 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
     }
     
     func setData(){
-        name = receive["Name"] as! String
-        sex = receive["Sex"] as! String
-        build = receive["Build"] as! String
-        variety = receive["Variety"] as! String
-        isSterilization = receive["IsSterilization"] as! String
-        hairType = receive["HairType"] as! String
-        acceptNum = receive["AcceptNum"] as! String
-        note = receive["Note"] as! String
-        phone = receive["Phone"] as! String
-        email = receive["Email"] as! String
-        resettlement = receive["Resettlement"] as! String
-        imageName = receive["ImageName"] as! String
+
+        // 收藏頁面
+        if let re = receiveObj {
+            
+            //    不顯示儲存按鈕
+//            saveItem.enabled = false
+            navigationItem.rightBarButtonItems = []
+            
+            name = re.name!
+            sex = re.sex!
+            build = re.build!
+            variety = re.variety!
+            isSterilization = re.isSterilization!
+            hairType = re.hairType!
+            acceptNum = re.acceptNum!
+            note = re.note!
+            phone = re.phone!
+            email = re.email!
+            resettlement = re.resettlement!
+            imageName = re.imageName!
+        }else{  // 一般頁面
+            name = receive["Name"] as! String
+            sex = receive["Sex"] as! String
+            build = receive["Build"] as! String
+            variety = receive["Variety"] as! String
+            isSterilization = receive["IsSterilization"] as! String
+            hairType = receive["HairType"] as! String
+            acceptNum = receive["AcceptNum"] as! String
+            note = receive["Note"] as! String
+            phone = receive["Phone"] as! String
+            email = receive["Email"] as! String
+            resettlement = receive["Resettlement"] as! String
+            imageName = receive["ImageName"] as! String
+        }
     }
 }

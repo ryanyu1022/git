@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 隱藏狀態欄
          func prefersStatusBarHidden() -> Bool {
-            return true
+            return true 
         }
     }
 
