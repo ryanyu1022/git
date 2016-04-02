@@ -28,7 +28,7 @@ class SaveTableViewController: UITableViewController{
         self.tableView.reloadData()
         
         //menu滑動
-        revealViewController().rearViewRevealWidth = 80
+        revealViewController().rearViewRevealWidth = 85
         menuItem.target = self.revealViewController()
         menuItem.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

@@ -31,7 +31,7 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         setView()
         
         //menu滑動
-        revealViewController().rearViewRevealWidth = 80
+        revealViewController().rearViewRevealWidth = 85
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
     }
@@ -305,18 +305,32 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
             
             //建立UIAlertController
             let ac = UIAlertController(title: nil, message: "收藏成功", preferredStyle: .Alert)
-            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
-            ac.addAction(callaction)
+//            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+//            ac.addAction(callaction)
             
+            //幾秒後自動關閉
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                Int64(1 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
+            }
+
             //Show
             self.presentViewController(ac, animated: true, completion: nil)
             
         }else{
             //建立UIAlertController
             let quetion = UIAlertController(title: nil, message: "已收藏", preferredStyle: .Alert)
-            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
-            quetion.addAction(callaction)
+//            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+//            quetion.addAction(callaction)
             
+            //幾秒後自動關閉
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                Int64(1 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
+            }
+
             //Show
             self.presentViewController(quetion, animated: true, completion: nil)
         }
