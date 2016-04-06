@@ -79,13 +79,11 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
         if name == ""{
             name = "無資料"
         }
-        var type = dict["Type"] as! String
-        if type == "其他"{
-            type = "兔"
-        }
+        let sex = dict["Sex"] as! String
+
         let variety = dict["Variety"] as! String
         
-        cell.setCell(img, name: name, type: type, variety: variety)
+        cell.setCell(img, name: name, sex: sex, variety: variety)
         
         // Circular image
         cell.img.layer.cornerRadius = cell.img.frame.size.width / 2
@@ -94,7 +92,7 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
         cell.img.layer.borderWidth = 4
         cell.img.layer.borderColor = UIColor.grayColor().CGColor
         
-        self.title = "所有動物列表: 共有 \(dataArray.count) 隻動物"
+        self.title = "共有 \(dataArray.count) 隻動物"
         return cell
     }
     

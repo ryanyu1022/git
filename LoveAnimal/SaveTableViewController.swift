@@ -87,10 +87,10 @@ class SaveTableViewController: UITableViewController{
             if name == ""{
                 name = "無資料"
             }
-            let type:String! = dict.type
+            let sex:String! = dict.sex
             let variety:String! = dict.variety
             
-            cell.setCell(img, name: name, type: type, variety: variety)
+            cell.setCell(img, name: name, sex: sex, variety: variety)
             
             // Circular image
             cell.img.layer.cornerRadius = cell.img.frame.size.width / 2

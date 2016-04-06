@@ -12,10 +12,11 @@ class SaveViewCell: UITableViewCell {
     
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var type: UILabel!
+//    @IBOutlet weak var type: UILabel!
+    @IBOutlet weak var sex: UILabel!
     @IBOutlet weak var variety: UILabel!
     
-    func setCell(catImage:String,name:String,type:String,variety:String){
+    func setCell(catImage:String,name:String,sex:String,variety:String){
         
         let url = NSURL(string: catImage)
         if let image = NSData(contentsOfURL: url!){
@@ -25,7 +26,7 @@ class SaveViewCell: UITableViewCell {
 //        self.img.image = UIImage(data: image!)
         
         self.name.text = name
-        self.type.text = type
+        self.sex.text = sex
         self.variety.text = variety
     }
 

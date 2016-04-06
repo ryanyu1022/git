@@ -85,11 +85,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-LoveAnimal/Alamofire.framework"
+  install_framework "Pods-LoveAnimal/ExpandingMenu.framework"
   install_framework "Pods-LoveAnimal/SWRevealViewController.framework"
   install_framework "Pods-LoveAnimal/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-LoveAnimal/Alamofire.framework"
+  install_framework "Pods-LoveAnimal/ExpandingMenu.framework"
   install_framework "Pods-LoveAnimal/SWRevealViewController.framework"
   install_framework "Pods-LoveAnimal/SwiftyJSON.framework"
 fi

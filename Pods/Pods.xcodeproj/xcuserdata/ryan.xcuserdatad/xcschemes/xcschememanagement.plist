@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ExpandingMenu-ExpandingMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ExpandingMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LoveAnimal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +37,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>69AA3C01F4CCD432F24A6801F0A664DA</key>
+		<key>2450E2DA3A7E3AA277D7C7290DDC055C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BD0922DC8E4BB3CC18FAB94E58BEE50</key>
+		<key>3E9BFFA317B0C221B0C8228780276C28</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F7FDFE32EA332C16D80851E8123AAF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>436D77517D271741F017D8236CB1E34B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79CEDB3FF5387198B23108E50398FDCE</key>
+		<key>9EDB241CA84062D18B45D12341F01D5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

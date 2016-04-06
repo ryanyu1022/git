@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 import Social
+import ExpandingMenu
 
 class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDelegate {
 
@@ -18,10 +19,11 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
     //動物資料
     var name = "", sex = "", build = "", variety = "", isSterilization = "", hairType = ""
     var acceptNum = "", note = "", phone = "", email = "", resettlement = "", imageName = ""
+    var isSavePage:Bool = false
     
     @IBOutlet weak var tab: UITableView!
     @IBOutlet weak var img: UIImageView!
-    @IBOutlet weak var saveItem: UIBarButtonItem!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,8 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         setData()
         setImage()
         setView()
+        
+        configureExpandingMenuButton()
         
         //menu滑動
         revealViewController().rearViewRevealWidth = 85
@@ -89,17 +93,6 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
             return cell
     }
     
-    @IBAction func callAction(sender: AnyObject) {
-        
-        let alertView:UIAlertView = UIAlertView()
-        alertView.title = "是否要撥打電話?"
-        alertView.message = phone
-        alertView.delegate = self
-        alertView.addButtonWithTitle("取消")
-        alertView.addButtonWithTitle("通話")
-        alertView.show()
-    }
-    
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int){
         // 取得按鈕的文字
         
@@ -117,18 +110,6 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         }
     }
     
-    @IBAction func emailAction(sender: AnyObject) {
-        
-        let mailComposeViewController = configuredMailComposeViewController()
-        //判斷能否寄信
-        if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-        } else {
-            self.showSendMailErrorAlert()
-        }
-        
-    }
-
     //發送郵件代理方法
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
@@ -170,173 +151,6 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         
     }
     
-
-    @IBAction func mapAction(sender: AnyObject) {
-        
-        let place:String = resettlement   //收容位置
-        var param = ""
-        
-        if place.containsString("愛免協會") {
-             param = "愛免協會".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        }else if place.containsString("動物之家"){
-             param = "動物之家".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        }else if place.containsString("臺北市流浪貓保護協會"){
-             param = "臺北市流浪貓保護協會".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        }else{
-             param = place.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        }
-        
-        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
-            UIApplication.sharedApplication().openURL(NSURL(string:"comgooglemaps://?q=\(param)&zoom=14&views=traffic")!)
-            
-        } else {
-            //itms-apps://itunes.apple.com/app/
-            UIApplication.sharedApplication().openURL(NSURL(string:"itms-apps://itunes.apple.com/app/")!)
-        }
-        
-        
-    }
-    
-    @IBAction func shareAction(sender: AnyObject) {
-        
-        //建立UIAlertController
-        let ac: UIAlertController = UIAlertController(title: "", message: "分享至", preferredStyle: .ActionSheet)
-        //取消
-        let cancel: UIAlertAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
-        //LINE
-        let line: UIAlertAction = UIAlertAction(title: "LINE", style: .Default) { action -> Void in
-            if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"line://")!)) {
-                
-                var place = ""
-                if self.resettlement.containsString("愛免協會") {
-                    place = "愛免協會"
-                }else if self.resettlement.containsString("動物之家"){
-                    place = "臺北市動物之家"
-                }else if self.resettlement.containsString("臺北市流浪貓保護協會"){
-                    place = "臺北市流浪貓保護協會"
-                }else{
-                    place = self.resettlement
-                }
-                
-                let tempContent = "我來自\(place),我的編號是\(self.acceptNum),快來看我吧...\(self.imageName)"
-                
-                let content = tempContent.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-                
-                UIApplication.sharedApplication().openURL(NSURL(string:"line://msg/text/\(content)")!)
-            } else {
-                //itms-apps://itunes.apple.com/app/
-                UIApplication.sharedApplication().openURL(NSURL(string:"itms-apps://itunes.apple.com/app/")!)
-            }
-        }
-        //FB
-        let fb: UIAlertAction = UIAlertAction(title: "Facebook", style: .Default) { action -> Void in
-            
-            // 檢查能否分享至 Facebook
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
-                
-                // 初始化預設的視圖控制器分享貼文
-                let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                
-                //動物圖片網址
-                let url = NSURL(string: self.imageName)
-                facebookComposeVC.addURL(url)
-                
-                self.presentViewController(facebookComposeVC, animated: true, completion: nil)
-            }
-            else {
-
-                //建立UIAlertController
-                let quetion = UIAlertController(title: nil, message: "您尚未安裝Facebook", preferredStyle: .Alert)
-                let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
-                quetion.addAction(callaction)
-                
-                //Show
-                self.presentViewController(quetion, animated: true, completion: nil)
-            }
-           
-        }
-        
-        //Twitter
-        let twitter: UIAlertAction = UIAlertAction(title: "Twitter", style: .Default) { action -> Void in
-            
-            // 檢查能否分享至 Twitter
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
-                // 初始化預設的視圖控制器分享貼文
-                let twitterComposeVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-                
-                //動物圖片網址
-                let url = NSURL(string: self.imageName)
-                twitterComposeVC.addURL(url)
-
-                self.presentViewController(twitterComposeVC, animated: true, completion: nil)
-
-            }
-            else {
-                //建立UIAlertController
-                let quetion = UIAlertController(title: nil, message: "您尚未安裝Twitter", preferredStyle: .Alert)
-                let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
-                quetion.addAction(callaction)
-                
-                //Show
-                self.presentViewController(quetion, animated: true, completion: nil)
-            }
-        }
-        
-        ac.addAction(cancel)
-        ac.addAction(line)
-        ac.addAction(fb)
-        ac.addAction(twitter)
-        
-        //provide a popover sourceView when using it on iPad
-//        actionSheetController.popoverPresentationController?.sourceView = sender as! UIView;
-        
-        //Present the AlertController
-        self.presentViewController(ac, animated: true, completion: nil)
-
-    }
-    
-    @IBAction func saveAction(sender: AnyObject) {
-        
-        let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext     //宣告代理物件操作core data
-        let check = Animal.query(moc, acceptNum: acceptNum)
-        
-        if check.isEmpty {
-            Animal.add(moc, receive: receive)
-            
-            //建立UIAlertController
-            let ac = UIAlertController(title: nil, message: "收藏成功", preferredStyle: .Alert)
-//            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
-//            ac.addAction(callaction)
-            
-            //幾秒後自動關閉
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-                Int64(1 * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-                self.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
-            }
-
-            //Show
-            self.presentViewController(ac, animated: true, completion: nil)
-            
-        }else{
-            //建立UIAlertController
-            let quetion = UIAlertController(title: nil, message: "已收藏", preferredStyle: .Alert)
-//            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
-//            quetion.addAction(callaction)
-            
-            //幾秒後自動關閉
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-                Int64(1 * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-                self.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
-            }
-
-            //Show
-            self.presentViewController(quetion, animated: true, completion: nil)
-        }
-
-    }
-    
     func setView(){
         // Set table view background color
         self.tab.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
@@ -367,9 +181,7 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
         // 收藏頁面
         if let re = receiveObj {
             
-            //    不顯示儲存按鈕
-//            saveItem.enabled = false
-            navigationItem.rightBarButtonItems = []
+            isSavePage = true
             
             name = re.name!
             sex = re.sex!
@@ -396,6 +208,217 @@ class CatDetailViewController: UIViewController ,MFMailComposeViewControllerDele
             email = receive["Email"] as! String
             resettlement = receive["Resettlement"] as! String
             imageName = receive["ImageName"] as! String
+        }
+    }
+    
+    // expanding menu
+    private func configureExpandingMenuButton() {
+        let menuButtonSize: CGSize = CGSize(width: 64.0, height: 64.0)
+        let menuButton = ExpandingMenuButton(frame: CGRect(origin: CGPointZero, size: menuButtonSize), centerImage: UIImage(named: "chooser-button-tab")!, centerHighlightedImage: UIImage(named: "chooser-button-tab-highlighted")!)
+        menuButton.center = CGPointMake(self.view.bounds.width - 32.0, self.view.bounds.height - 72.0)
+        self.view.addSubview(menuButton)
+        
+        let item1 = ExpandingMenuItem(size: menuButtonSize, title: "", image: UIImage(named: "call")!, highlightedImage: UIImage(named: "call")!, backgroundImage: nil, backgroundHighlightedImage: nil) { () -> Void in
+            
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "是否要撥打電話?"
+            alertView.message = self.phone
+            alertView.delegate = self
+            alertView.addButtonWithTitle("取消")
+            alertView.addButtonWithTitle("通話")
+            alertView.show()
+
+
+        }
+
+        let item2 = ExpandingMenuItem(size: menuButtonSize, title: "", image: UIImage(named: "mail")!, highlightedImage: UIImage(named: "mail")!, backgroundImage: nil, backgroundHighlightedImage: nil) { () -> Void in
+            
+            let mailComposeViewController = self.configuredMailComposeViewController()
+            //判斷能否寄信
+            if MFMailComposeViewController.canSendMail() {
+                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
+
+
+        }
+
+        let item3 = ExpandingMenuItem(size: menuButtonSize, title: "", image: UIImage(named: "map")!, highlightedImage: UIImage(named: "map")!, backgroundImage: nil, backgroundHighlightedImage: nil) { () -> Void in
+            
+            let place:String = self.resettlement   //收容位置
+            var param = ""
+            
+            if place.containsString("愛免協會") {
+                param = "愛免協會".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            }else if place.containsString("動物之家"){
+                param = "台北市動物之家".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            }else if place.containsString("臺北市流浪貓保護協會"){
+                param = "臺北市流浪貓保護協會".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            }else{
+                param = place.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            }
+            
+            if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
+                UIApplication.sharedApplication().openURL(NSURL(string:"comgooglemaps://?q=\(param)&zoom=14&views=traffic")!)
+                
+            } else {
+                //itms-apps://itunes.apple.com/app/
+                UIApplication.sharedApplication().openURL(NSURL(string:"itms-apps://itunes.apple.com/app/")!)
+            }
+
+
+        }
+
+        let item4 = ExpandingMenuItem(size: menuButtonSize, title: "", image: UIImage(named: "share")!, highlightedImage: UIImage(named: "share")!, backgroundImage: nil, backgroundHighlightedImage: nil) { () -> Void in
+            
+            //建立UIAlertController
+            let ac: UIAlertController = UIAlertController(title: "", message: "分享至", preferredStyle: .ActionSheet)
+            //取消
+            let cancel: UIAlertAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+            //LINE
+            let line: UIAlertAction = UIAlertAction(title: "LINE", style: .Default) { action -> Void in
+                if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"line://")!)) {
+                    
+                    var place = ""
+                    if self.resettlement.containsString("愛免協會") {
+                        place = "愛免協會"
+                    }else if self.resettlement.containsString("動物之家"){
+                        place = "臺北市動物之家"
+                    }else if self.resettlement.containsString("臺北市流浪貓保護協會"){
+                        place = "臺北市流浪貓保護協會"
+                    }else{
+                        place = self.resettlement
+                    }
+                    
+                    let tempContent = "我來自\(place),我的編號是\(self.acceptNum),快來看我吧...\(self.imageName)"
+                    
+                    let content = tempContent.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                    
+                    UIApplication.sharedApplication().openURL(NSURL(string:"line://msg/text/\(content)")!)
+                } else {
+                    //itms-apps://itunes.apple.com/app/
+                    UIApplication.sharedApplication().openURL(NSURL(string:"itms-apps://itunes.apple.com/app/")!)
+                }
+            }
+            //FB
+            let fb: UIAlertAction = UIAlertAction(title: "Facebook", style: .Default) { action -> Void in
+                
+                // 檢查能否分享至 Facebook
+                if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+                    
+                    // 初始化預設的視圖控制器分享貼文
+                    let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                    
+                    //動物圖片網址
+                    let url = NSURL(string: self.imageName)
+                    facebookComposeVC.addURL(url)
+                    
+                    self.presentViewController(facebookComposeVC, animated: true, completion: nil)
+                }
+                else {
+                    
+                    //建立UIAlertController
+                    let quetion = UIAlertController(title: nil, message: "您尚未安裝Facebook", preferredStyle: .Alert)
+                    let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+                    quetion.addAction(callaction)
+                    
+                    //Show
+                    self.presentViewController(quetion, animated: true, completion: nil)
+                }
+                
+            }
+            
+            //Twitter
+            let twitter: UIAlertAction = UIAlertAction(title: "Twitter", style: .Default) { action -> Void in
+                
+                // 檢查能否分享至 Twitter
+                if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+                    // 初始化預設的視圖控制器分享貼文
+                    let twitterComposeVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                    
+                    //動物圖片網址
+                    let url = NSURL(string: self.imageName)
+                    twitterComposeVC.addURL(url)
+                    
+                    self.presentViewController(twitterComposeVC, animated: true, completion: nil)
+                    
+                }
+                else {
+                    //建立UIAlertController
+                    let quetion = UIAlertController(title: nil, message: "您尚未安裝Twitter", preferredStyle: .Alert)
+                    let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+                    quetion.addAction(callaction)
+                    
+                    //Show
+                    self.presentViewController(quetion, animated: true, completion: nil)
+                }
+            }
+            
+            ac.addAction(cancel)
+            ac.addAction(line)
+            ac.addAction(fb)
+            ac.addAction(twitter)
+            
+            //provide a popover sourceView when using it on iPad
+            //        actionSheetController.popoverPresentationController?.sourceView = sender as! UIView;
+            
+            //Present the AlertController
+            self.presentViewController(ac, animated: true, completion: nil)
+
+        }
+        
+        let item5 = ExpandingMenuItem(size: menuButtonSize, title: "", image: UIImage(named: "star")!, highlightedImage: UIImage(named: "star")!, backgroundImage: nil, backgroundHighlightedImage: nil) { () -> Void in
+
+            let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext     //宣告代理物件操作core data
+            let check = Animal.query(moc, acceptNum: self.acceptNum)
+            
+            if check.isEmpty {
+                Animal.add(moc, receive: self.receive)
+                
+                //建立UIAlertController
+                let ac = UIAlertController(title: nil, message: "收藏成功", preferredStyle: .Alert)
+                
+                //幾秒後自動關閉
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                    Int64(1 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    self.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
+                }
+                
+                //Show
+                self.presentViewController(ac, animated: true, completion: nil)
+                
+            }else{
+                //建立UIAlertController
+                let quetion = UIAlertController(title: nil, message: "已收藏", preferredStyle: .Alert)
+                //            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+                //            quetion.addAction(callaction)
+                
+                //幾秒後自動關閉
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                    Int64(1 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    self.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
+                }
+                
+                //Show
+                self.presentViewController(quetion, animated: true, completion: nil)
+            }
+
+        }
+
+//        item1.titleColor = UIColor.redColor()
+//        item2.titleColor = UIColor.redColor()
+//        item3.titleColor = UIColor.redColor()
+//        item4.titleColor = UIColor.redColor()
+//        item5.titleColor = UIColor.redColor()
+        
+        if isSavePage {
+            
+            menuButton.addMenuItems([item1,item2,item3,item4])
+        }else {
+            menuButton.addMenuItems([item1,item2,item3,item4,item5])
         }
     }
 }
