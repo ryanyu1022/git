@@ -16,6 +16,6 @@
         <attribute name="variety" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Animal" positionX="-27" positionY="18" width="128" height="238"/>
+        <element name="Animal" positionX="-27" positionY="18" width="128" height="240"/>
     </elements>
 </model>

@@ -15,8 +15,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "94A1B6231C873DE7002919E8"
-               BuildableName = "LoveAnimal.app"
+               BuildableName = "&#x8a8d;&#x990a;&#x4ee3;&#x66ff;&#x8cfc;&#x8cb7;.app"
                BlueprintName = "LoveAnimal"
+               ReferencedContainer = "container:LoveAnimal.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "94A1B63A1C873DE7002919E8"
+               BuildableName = "&#x6e2c;&#x8a66;.xctest"
+               BlueprintName = "LoveAnimalTests"
                ReferencedContainer = "container:LoveAnimal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "94A1B63A1C873DE7002919E8"
-               BuildableName = "LoveAnimalTests.xctest"
+               BuildableName = "&#x6e2c;&#x8a66;.xctest"
                BlueprintName = "LoveAnimalTests"
                ReferencedContainer = "container:LoveAnimal.xcodeproj">
             </BuildableReference>
@@ -43,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "94A1B6451C873DE7002919E8"
-               BuildableName = "LoveAnimalUITests.xctest"
+               BuildableName = "&#x6e2c;&#x8a66;.xctest"
                BlueprintName = "LoveAnimalUITests"
                ReferencedContainer = "container:LoveAnimal.xcodeproj">
             </BuildableReference>
@@ -53,7 +67,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94A1B6231C873DE7002919E8"
-            BuildableName = "LoveAnimal.app"
+            BuildableName = "&#x8a8d;&#x990a;&#x4ee3;&#x66ff;&#x8cfc;&#x8cb7;.app"
             BlueprintName = "LoveAnimal"
             ReferencedContainer = "container:LoveAnimal.xcodeproj">
          </BuildableReference>
@@ -76,7 +90,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94A1B6231C873DE7002919E8"
-            BuildableName = "LoveAnimal.app"
+            BuildableName = "&#x8a8d;&#x990a;&#x4ee3;&#x66ff;&#x8cfc;&#x8cb7;.app"
             BlueprintName = "LoveAnimal"
             ReferencedContainer = "container:LoveAnimal.xcodeproj">
          </BuildableReference>
@@ -95,7 +109,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94A1B6231C873DE7002919E8"
-            BuildableName = "LoveAnimal.app"
+            BuildableName = "&#x8a8d;&#x990a;&#x4ee3;&#x66ff;&#x8cfc;&#x8cb7;.app"
             BlueprintName = "LoveAnimal"
             ReferencedContainer = "container:LoveAnimal.xcodeproj">
          </BuildableReference>

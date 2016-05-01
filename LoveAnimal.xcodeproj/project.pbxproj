@@ -30,6 +30,7 @@
 		94AACD381CA9A28500C22565 /* Animal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AACD361CA9A28500C22565 /* Animal+CoreDataProperties.swift */; };
 		94AACD391CA9A28500C22565 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AACD371CA9A28500C22565 /* Animal.swift */; };
 		94AACD771CAD21C100C22565 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AACD761CAD21C100C22565 /* Social.framework */; };
+		94C344391CCBD3FF00CB850C /* networkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C344381CCBD3FF00CB850C /* networkCheck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +59,10 @@
 		94A1B6311C873DE7002919E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94A1B6341C873DE7002919E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A1B6361C873DE7002919E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94A1B63B1C873DE7002919E8 /* LoveAnimalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoveAnimalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A1B63B1C873DE7002919E8 /* 測試.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "測試.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A1B63F1C873DE7002919E8 /* LoveAnimalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveAnimalTests.swift; sourceTree = "<group>"; };
 		94A1B6411C873DE7002919E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94A1B6461C873DE7002919E8 /* LoveAnimalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoveAnimalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A1B6461C873DE7002919E8 /* 測試.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "測試.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A1B64A1C873DE7002919E8 /* LoveAnimalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveAnimalUITests.swift; sourceTree = "<group>"; };
 		94A1B64C1C873DE7002919E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94A1B65C1C8754E9002919E8 /* RearTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RearTableViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		94AACD361CA9A28500C22565 /* Animal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		94AACD371CA9A28500C22565 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		94AACD761CAD21C100C22565 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		94C344381CCBD3FF00CB850C /* networkCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = networkCheck.swift; sourceTree = "<group>"; };
 		C8CDCEA98074AFCD1CE5A703 /* Pods_LoveAnimal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveAnimal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D0502E564C7E5F57901288 /* Pods-LoveAnimal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveAnimal.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveAnimal/Pods-LoveAnimal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,8 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				94A1B6241C873DE7002919E8 /* LoveAnimal.app */,
-				94A1B63B1C873DE7002919E8 /* LoveAnimalTests.xctest */,
-				94A1B6461C873DE7002919E8 /* LoveAnimalUITests.xctest */,
+				94A1B63B1C873DE7002919E8 /* 測試.xctest */,
+				94A1B6461C873DE7002919E8 /* 測試.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,9 +155,10 @@
 				94AACCEE1CA4435800C22565 /* InfoViewController.swift */,
 				94A1B6F01C903CDF002919E8 /* DogTableViewController.swift */,
 				94A1B6F41C904D6F002919E8 /* CatTableViewController.swift */,
-				94A1B7061C92D369002919E8 /* CatDetailViewController.swift */,
 				94A1B6F21C90460D002919E8 /* RabbitTableViewController.swift */,
+				94A1B7061C92D369002919E8 /* CatDetailViewController.swift */,
 				94A1B6E61C8ED180002919E8 /* SaveTableViewController.swift */,
+				94C344381CCBD3FF00CB850C /* networkCheck.swift */,
 				94A1B6311C873DE7002919E8 /* Assets.xcassets */,
 				94A1B6331C873DE7002919E8 /* LaunchScreen.storyboard */,
 				94A1B6361C873DE7002919E8 /* Info.plist */,
@@ -241,7 +244,7 @@
 			);
 			name = LoveAnimalTests;
 			productName = LoveAnimalTests;
-			productReference = 94A1B63B1C873DE7002919E8 /* LoveAnimalTests.xctest */;
+			productReference = 94A1B63B1C873DE7002919E8 /* 測試.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		94A1B6451C873DE7002919E8 /* LoveAnimalUITests */ = {
@@ -259,7 +262,7 @@
 			);
 			name = LoveAnimalUITests;
 			productName = LoveAnimalUITests;
-			productReference = 94A1B6461C873DE7002919E8 /* LoveAnimalUITests.xctest */;
+			productReference = 94A1B6461C873DE7002919E8 /* 測試.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -274,6 +277,7 @@
 				TargetAttributes = {
 					94A1B6231C873DE7002919E8 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = MEJFK5R9X9;
 					};
 					94A1B63A1C873DE7002919E8 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -397,6 +401,7 @@
 				94A1B7071C92D369002919E8 /* CatDetailViewController.swift in Sources */,
 				94AACCEF1CA4435800C22565 /* InfoViewController.swift in Sources */,
 				94A1B65F1C877524002919E8 /* SaveViewCell.swift in Sources */,
+				94C344391CCBD3FF00CB850C /* networkCheck.swift in Sources */,
 				94A1B6F11C903CDF002919E8 /* DogTableViewController.swift in Sources */,
 				94A1B6F51C904D6F002919E8 /* CatTableViewController.swift in Sources */,
 				94AACD381CA9A28500C22565 /* Animal+CoreDataProperties.swift in Sources */,
@@ -541,10 +546,12 @@
 			baseConfigurationReference = 41A3CD85DA9BFA86C9ED3317 /* Pods-LoveAnimal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LoveAnimal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harmonies.payitforward.LoveAnimal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ryanyu1022.AdoptAnimal;
+				PRODUCT_NAME = LoveAnimal;
 			};
 			name = Debug;
 		};
@@ -553,34 +560,34 @@
 			baseConfigurationReference = D1D0502E564C7E5F57901288 /* Pods-LoveAnimal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LoveAnimal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harmonies.payitforward.LoveAnimal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ryanyu1022.AdoptAnimal;
+				PRODUCT_NAME = LoveAnimal;
 			};
 			name = Release;
 		};
 		94A1B6531C873DE7002919E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LoveAnimalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmonies.payitforward.LoveAnimalTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoveAnimal.app/LoveAnimal";
+				PRODUCT_NAME = "測試";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/測試.app/測試";
 			};
 			name = Debug;
 		};
 		94A1B6541C873DE7002919E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LoveAnimalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmonies.payitforward.LoveAnimalTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoveAnimal.app/LoveAnimal";
+				PRODUCT_NAME = "測試";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/測試.app/測試";
 			};
 			name = Release;
 		};
@@ -589,9 +596,11 @@
 			buildSettings = {
 				INFOPLIST_FILE = LoveAnimalUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmonies.payitforward.LoveAnimalUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LoveAnimal;
+				PRODUCT_NAME = "測試";
+				PROVISIONING_PROFILE = "";
+				TEST_TARGET_NAME = "測試";
 				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
@@ -601,9 +610,11 @@
 			buildSettings = {
 				INFOPLIST_FILE = LoveAnimalUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmonies.payitforward.LoveAnimalUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LoveAnimal;
+				PRODUCT_NAME = "測試";
+				PROVISIONING_PROFILE = "";
+				TEST_TARGET_NAME = "測試";
 				USES_XCTRUNNER = YES;
 			};
 			name = Release;

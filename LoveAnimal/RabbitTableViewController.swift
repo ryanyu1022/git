@@ -29,6 +29,8 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        check()
+        
         //先移除分隔線
         self.tableView.separatorStyle = .None
         //loading
@@ -39,24 +41,6 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
         menuItem.target = self.revealViewController()
         menuItem.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
-        
-        let param = "其他".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        
-        //網址
-        let url = NSURL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)")
-        
-        //建立一般的session設定
-        let sessionWithConfigure = NSURLSessionConfiguration.defaultSessionConfiguration()
-        
-        //設定委任對象為自己
-        let session = NSURLSession(configuration: sessionWithConfigure, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        
-        //設定下載網址
-        let dataTask = session.downloadTaskWithURL(url!)
-        
-        //啟動或重新啟動下載動作
-        dataTask.resume()
         
     }
     
@@ -94,6 +78,25 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
         
         self.title = "共有 \(dataArray.count) 隻動物"
         return cell
+    }
+    
+    func connect(){
+        let param = "其他".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        
+        //網址
+        let url = NSURL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c&q=\(param)")
+        
+        //建立一般的session設定
+        let sessionWithConfigure = NSURLSessionConfiguration.defaultSessionConfiguration()
+        
+        //設定委任對象為自己
+        let session = NSURLSession(configuration: sessionWithConfigure, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        
+        //設定下載網址
+        let dataTask = session.downloadTaskWithURL(url!)
+        
+        //啟動或重新啟動下載動作
+        dataTask.resume()
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
@@ -174,9 +177,25 @@ class RabbitTableViewController: UITableViewController ,NSURLSessionDelegate,NSU
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //檢查網路
+    func check(){
+        
+        //不可連線
+        if networkCheck.isConnectedToNetwork() == false {
+            
+            let quetion = UIAlertController(title: "無法連線", message: "請檢查網路", preferredStyle: .Alert)
+            //            let callaction = UIAlertAction(title: "確定", style: .Cancel , handler:nil)
+            let callaction = UIAlertAction(title: "確定", style: .Cancel, handler: { (UIAlertAction) -> Void in
+                self.check()
+            })
+            quetion.addAction(callaction)
+            //Show
+            self.presentViewController(quetion, animated: true, completion: nil)
+            //可連線
+        }else {
+            connect()
+        }
     }
+
 }
 

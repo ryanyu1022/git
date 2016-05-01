@@ -20,17 +20,25 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="Let-Du-ZAU">
                                 <rect key="frame" x="195" y="235" width="186" height="130"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="認養代替購買" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lu-vo-xKB">
+                                <rect key="frame" x="201" y="373" width="174" height="37"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90588235289999997" green="0.92156862750000001" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Let-Du-ZAU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="38K-pr-vW4"/>
                             <constraint firstItem="Let-Du-ZAU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="7GK-p4-WVB"/>
+                            <constraint firstItem="4lu-vo-xKB" firstAttribute="top" secondItem="Let-Du-ZAU" secondAttribute="bottom" constant="8" id="TvD-1i-zpy"/>
+                            <constraint firstItem="4lu-vo-xKB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wmd-4d-9HN"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-174" y="355"/>
         </scene>
     </scenes>
     <resources>
